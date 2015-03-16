@@ -11,6 +11,7 @@ let column1 = "item1"
 let column2 = "item2"
 let column3 = "item3"
 let sheet1Name = "Sheet1Test"
+let leftSpaceWidth = 2
 // Create new file and get the first worksheet
 let workbook = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet) 
 // Note that worksheets are indexed from one instead of zero
@@ -25,6 +26,8 @@ let titles = [| column1; column2; column3 |]
 let titleLength = titles.Length
 let names = Array2D.init 10 1 (fun i _ -> string('A' + char(i)))
 let data = Array2D.init length titleLength (fun i j -> getCsvData.[i].[j])
+worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
+
 worksheet.Range("C2", "E2").Value2 <- titles
 worksheet.Range("B3", "B12").Value2 <- names
 worksheet.Range("C3", "E12").Value2 <- data
