@@ -22,8 +22,9 @@ let getCsvData  =
 let length = getCsvData.Length
 // Store data in arrays of strings or floats
 let titles = [| column1; column2; column3 |]
+let titleLength = titles.Length
 let names = Array2D.init 10 1 (fun i _ -> string('A' + char(i)))
-let data = Array2D.init length 3 (fun i j -> getCsvData.[i].[j])
+let data = Array2D.init length titleLength (fun i j -> getCsvData.[i].[j])
 worksheet.Range("C2", "E2").Value2 <- titles
 worksheet.Range("B3", "B12").Value2 <- names
 worksheet.Range("C3", "E12").Value2 <- data
