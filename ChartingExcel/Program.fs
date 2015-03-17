@@ -70,7 +70,7 @@ let processCsv csvData =
                         let SetBorders2 = SimplePattern range2
                         let SetBorders3 = SetPattern rowsRange
                         worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
-    | None -> do System.Environment.Exit 1
+    | None -> do failwith "fail csv processing"
 
 processCsv dataFile
 
