@@ -56,7 +56,6 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="Program.fs" />
     <None Include="App.config" />
     <COMReference Include="Microsoft Excel 15.0 Object Library">
       <Guid>{00020813-0000-0000-c000-000000000046}</Guid>
@@ -68,6 +67,9 @@
     </COMReference>
     <None Include="packages.config" />
     <None Include="datafile.csv" />
+    <Compile Include="ExcelUtil.fs" />
+    <Compile Include="CsvProcessing.fs" />
+    <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Data">
