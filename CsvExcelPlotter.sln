@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ChartingExcel", "ChartingExcel\ChartingExcel.fsproj", "{DA49B28A-E1F0-4B81-8B62-DFECD10509A3}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CsvExcelPlotter", "CsvExcelPlotter\CsvExcelPlotter.fsproj", "{DA49B28A-E1F0-4B81-8B62-DFECD10509A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
