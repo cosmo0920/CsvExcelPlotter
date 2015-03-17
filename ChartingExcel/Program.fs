@@ -6,7 +6,8 @@ open FSharp.Data
 
 // Run Excel as a visible application
 let app = new ApplicationClass(Visible = true) 
-let dataFile = CsvFile.Load("datafile.csv").Cache()
+let dataFile = Some(CsvFile.Load("datafile.csv").Cache())
+let rowName = "itemName"
 let column1 = "item1"
 let column2 = "item2"
 let column3 = "item3"
@@ -16,21 +17,31 @@ let leftSpaceWidth = 2
 let workbook = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet) 
 // Note that worksheets are indexed from one instead of zero
 let worksheet = (workbook.Worksheets.[1] :?> Worksheet)
-let getCsvData  =
-    [|for row in dataFile.Rows do
+
+let readCsvData (csvData: Runtime.CsvFile<CsvRow>) =
+    [|for row in csvData.Rows do
         yield [|row.GetColumn(column1); row.GetColumn(column2); row.GetColumn(column3)|]|]
+let readCsvRowName (csvData: Runtime.CsvFile<CsvRow>) =
+    [|for row in csvData.Rows do
+        yield [|row.GetColumn(rowName); |]|]
 
-let length = getCsvData.Length
-// Store data in arrays of strings or floats
-let titles = [| column1; column2; column3 |]
-let titleLength = titles.Length
-let names = Array2D.init 10 1 (fun i _ -> string('A' + char(i)))
-let data = Array2D.init length titleLength (fun i j -> getCsvData.[i].[j])
+let processCsv csvData =
+    match csvData with
+    | Some(dataFile) -> let csv = readCsvData dataFile
+                        let rowItem = readCsvRowName dataFile
+                        let length = csv.Length
+                        // Store data in arrays of strings or floats
+                        let titles = [| column1; column2; column3 |]
+                        let titleLength = titles.Length
+                        let names = Array2D.init 10 1 (fun i _ -> rowItem.[i].[0]) //string('A' + char(i)))
+                        let data = Array2D.init length titleLength (fun i j -> csv.[i].[j])
+                        worksheet.Range("C2", "E2").Value2 <- titles
+                        worksheet.Range("B3", "B12").Value2 <- names
+                        worksheet.Range("C3", "E12").Value2 <- data
+    | None -> do System.Environment.Exit 1
+
+processCsv dataFile
 worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
-
-worksheet.Range("C2", "E2").Value2 <- titles
-worksheet.Range("B3", "B12").Value2 <- names
-worksheet.Range("C3", "E12").Value2 <- data
 
 worksheet.Name <- sheet1Name
 let range = worksheet.Range("B2", "E2")
