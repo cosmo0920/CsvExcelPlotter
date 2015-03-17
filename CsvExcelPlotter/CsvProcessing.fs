@@ -52,9 +52,9 @@ let processCsv csvData =
                         let range2 = worksheet.Range("B2:B"+string(3+length-1))
                         let rowsRange = worksheet.Range(rowsArea)
 
-                        let SetBorders = SetPattern titleRange
-                        let SetBorders2 = SimplePattern range2
-                        let SetBorders3 = SetPattern rowsRange
+                        SetPattern titleRange
+                        SimplePattern range2
+                        SetPattern rowsRange
                         worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
     | None -> do failwith "fail csv processing"
 
