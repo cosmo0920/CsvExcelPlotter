@@ -1,4 +1,4 @@
-﻿module public Excel.Util
+﻿module Excel.Util
 open Microsoft.Office.Interop.Excel
 
 // 範囲の周りのセルに罫線を設定します。
