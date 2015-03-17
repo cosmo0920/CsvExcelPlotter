@@ -10,7 +10,7 @@ if not(File.Exists(csvFile)) then
     printfn "Target csv file %s doesn't exist." csvFile; failwith "quit"
 
 // Run Excel as a visible application
-let app = new ApplicationClass(Visible = true) 
+let app = new ApplicationClass(Visible = true)
 let dataFile = Some(CsvFile.Load("datafile.csv").Cache())
 let rowName = "itemName"
 let column1 = "item1"
