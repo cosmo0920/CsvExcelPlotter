@@ -43,14 +43,14 @@ let processCsv csvData =
                         let data = Array2D.init length titleLength (fun i j -> csv.[i].[j])
                         let titleArea = "C2:" + string('C'+char(titleLength-1))+"2"
                         let namesArea = "B3:B"+string(3+length-1)
-                        let rowsArea = "C3:E"+string(3+length-1)
+                        let dataArea = "C3:"+string('C'+char(titleLength-1))+string(3+length-1)
                         worksheet.Range(titleArea).Value2 <- titles
                         worksheet.Range(namesArea).Value2 <- names
-                        worksheet.Range(rowsArea).Value2 <- data
+                        worksheet.Range(dataArea).Value2 <- data
                         worksheet.Name <- sheet1Name
                         let titleRange = worksheet.Range(titleArea)
                         let range2 = worksheet.Range("B2:B"+string(3+length-1))
-                        let rowsRange = worksheet.Range(rowsArea)
+                        let rowsRange = worksheet.Range(dataArea)
 
                         SetPattern titleRange
                         SimplePattern range2
