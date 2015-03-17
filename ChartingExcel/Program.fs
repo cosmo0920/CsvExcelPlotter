@@ -3,6 +3,11 @@
 open Microsoft.Office.Interop.Excel
 open System
 open FSharp.Data
+open System.IO
+
+let csvFile = "datafile.csv"
+if not(File.Exists(csvFile)) then
+    printfn "Target csv file %s doesn't exist." csvFile; failwith "quit"
 
 // Run Excel as a visible application
 let app = new ApplicationClass(Visible = true) 
