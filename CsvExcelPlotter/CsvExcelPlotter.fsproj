@@ -67,8 +67,10 @@
     </COMReference>
     <None Include="packages.config" />
     <None Include="datafile.csv" />
+    <Compile Include="ProcessedCsvType.fs" />
     <Compile Include="ExcelUtil.fs" />
     <Compile Include="CsvProcessing.fs" />
+    <Compile Include="Writer.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
