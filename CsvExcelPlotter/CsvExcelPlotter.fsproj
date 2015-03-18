@@ -69,6 +69,7 @@
     <None Include="datafile.csv" />
     <Compile Include="ProcessedCsvType.fs" />
     <Compile Include="ExcelUtil.fs" />
+    <Compile Include="CsvSchema.fs" />
     <Compile Include="CsvProcessing.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Program.fs" />
