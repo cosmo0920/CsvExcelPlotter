@@ -7,17 +7,16 @@ open System.IO
 open Excel.Util
 open ProcessedCsvType
 
-let rowName = "itemName"
+let rowName = {Name = "itemName"}
+let columns = {Names = [|"item1"; "item2"; "item3"|]}
 let column1 = "item1"
 let column2 = "item2"
 let column3 = "item3"
 
 let readCsvData (csvData: Runtime.CsvFile<CsvRow>) =
-    [|for row in csvData.Rows do
-        yield [|row.GetColumn(column1); row.GetColumn(column2); row.GetColumn(column3)|]|]
+    [|for row in csvData.Rows -> [|row.[columns.Names.[0]]; row.[columns.Names.[1]]; row.[columns.Names.[2]];|]|]
 let readCsvRowName (csvData: Runtime.CsvFile<CsvRow>) =
-    [|for row in csvData.Rows do
-        yield [|row.GetColumn(rowName); |]|]
+    [|for row in csvData.Rows -> [|row.[rowName.Name]; |]|]
 
 let processCsv csvData =
     match csvData with
