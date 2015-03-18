@@ -5,6 +5,12 @@ open FSharp.Data
 open ProcessedCsvType
 open CsvSchema
 
+let readCsvData (csvData: Runtime.CsvFile<CsvRow>) =
+    [|for row in csvData.Rows ->
+        [|for col in titles -> row.[col]; |]|]
+let readCsvRowName (csvData: Runtime.CsvFile<CsvRow>) =
+    [|for row in csvData.Rows -> [|row.[rowName]; |]|]
+
 let processCsv csvData =
     match csvData with
     | Some(dataFile) -> let csv = readCsvData dataFile
