@@ -7,3 +7,7 @@ Currently, work in progress.
 
 * Microsoft.Office.Interop.Excel
 * CsvProvider (FSharp.Data)
+
+### LICENSE
+
+[MIT](LICENSE).
