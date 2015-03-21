@@ -15,3 +15,11 @@ let SetPattern (range:Range) =
 // 上下左右を罫線で囲う
 let SimplePattern (range:Range) =
     range.Borders.LineStyle <- XlLineStyle.xlContinuous
+
+// セルを濃い灰色で塗る
+let SimpleColorGreyFormat (range: Range) =
+    range.Interior.Color <- XlRgbColor.rgbDimGrey;;
+
+// セルを薄い灰色で塗る
+let SimpleColorLightGrayFormat (range: Range) =
+    range.Interior.Color <- XlRgbColor.rgbLightGrey;;

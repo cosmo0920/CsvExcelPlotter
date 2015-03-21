@@ -29,8 +29,10 @@ let writeToExcel (processedCsv: ProcessedCsv) =
     let rowsRange = worksheet.Range(dataArea)
 
     SetPattern titleRange
+    SimpleColorGreyFormat titleRange
     SimplePattern namesRange
     SetPattern rowsRange
+    SimpleColorLightGrayFormat namesRange
     worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
 
 let write (processCsv: ProcessedCsv option) = 
