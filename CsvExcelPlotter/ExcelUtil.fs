@@ -1,7 +1,7 @@
 ﻿module Excel.Util
 open Microsoft.Office.Interop.Excel
 
-// 範囲の周りのセルに罫線を設定します。
+// 範囲の周りのセルに罫線(細い線)を設定します。
 let SetPattern (range:Range) =
     range.Borders.[XlBordersIndex.xlEdgeLeft].LineStyle <- XlLineStyle.xlContinuous
     range.Borders.[XlBordersIndex.xlEdgeLeft].Weight <- XlBorderWeight.xlThin
@@ -12,7 +12,7 @@ let SetPattern (range:Range) =
     range.Borders.[XlBordersIndex.xlEdgeRight].LineStyle <- XlLineStyle.xlContinuous
     range.Borders.[XlBordersIndex.xlEdgeRight].Weight <- XlBorderWeight.xlThin
 
-// 上下左右を罫線で囲う
+// 上下左右を罫線(細い線)で囲う
 let SimplePattern (range:Range) =
     range.Borders.LineStyle <- XlLineStyle.xlContinuous
 
