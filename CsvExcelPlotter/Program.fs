@@ -14,5 +14,6 @@ let main argv =
     let csv = processCsv dataFile
     // output to Excel
     write csv
+    ignore newWorksheet
 
     0 // return an integer exit code
