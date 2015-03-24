@@ -14,6 +14,9 @@ let workbook = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet)
 // Note that worksheets are indexed from one instead of zero
 let worksheet = (workbook.Worksheets.[1] :?> Worksheet)
 
+// insert new work sheet
+let newWorksheet = (workbook.Worksheets.Add() :?> Worksheet)
+
 let writeToExcel (processedCsv: ProcessedCsv) =
     let length = processedCsv.RowLength
     let titleLength = processedCsv.Titles.Length
