@@ -5,8 +5,12 @@ open FSharp.Data
 open CsvProcessing
 
 [<EntryPoint>]
-let main argv = 
+let main argv =
+#if DEBUG
+    let csvFile = __SOURCE_DIRECTORY__ + "\\datafile.csv"
+#else
     let csvFile = "datafile.csv"
+#endif
     if not(File.Exists(csvFile)) then
         printfn "Target csv file %s doesn't exist." csvFile; failwith "quit"
 
