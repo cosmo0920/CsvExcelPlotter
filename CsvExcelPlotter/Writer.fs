@@ -25,11 +25,11 @@ let writeToExcel (sheet: Worksheet) (processedCsv: ProcessedCsv) =
     SetPattern rowsRange
     SimpleColorLightGrayFormat namesRange
 
-let setExcelStyle (worksheet: Worksheet)(sheetName: string)(leftSpaceWidth: int) =
-    worksheet.Name <- sheetName
-    worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
+let setExcelStyle (sheet: Worksheet)(sheetName: string)(leftSpaceWidth: int) =
+    sheet.Name <- sheetName
+    sheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
 
-let write (worksheet: Worksheet)(processCsv: ProcessedCsv option) =
+let write (sheet: Worksheet)(processCsv: ProcessedCsv option) =
     match processCsv with
-    | Some(csv) -> writeToExcel worksheet csv
+    | Some(csv) -> writeToExcel sheet csv
     | None -> do failwith "quit" 
