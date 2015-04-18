@@ -5,18 +5,6 @@ open ProcessedCsvType
 open CsvProcessing
 open Excel.Util
 
-// Run Excel as a visible application
-let app = new ApplicationClass(Visible = true)
-let sheet1Name = "Sheet1Test"
-let leftSpaceWidth = 2
-// Create new file and get the first worksheet
-let workbook = app.Workbooks.Add(XlWBATemplate.xlWBATWorksheet) 
-// Note that worksheets are indexed from one instead of zero
-let worksheet = (workbook.Worksheets.[1] :?> Worksheet)
-
-// insert new work sheet
-let newWorksheet = (workbook.Worksheets.Add() :?> Worksheet)
-
 let writeToExcel (sheet: Worksheet) (processedCsv: ProcessedCsv) =
     let length = processedCsv.RowLength
     let titleLength = processedCsv.Titles.Length
@@ -26,7 +14,7 @@ let writeToExcel (sheet: Worksheet) (processedCsv: ProcessedCsv) =
     sheet.Range(titleArea).Value2 <- processedCsv.Titles
     sheet.Range(namesArea).Value2 <- processedCsv.Names
     sheet.Range(dataArea).Value2 <- processedCsv.CsvData
-    sheet.Name <- sheet1Name
+
     let titleRange = sheet.Range(titleArea)
     let namesRange = sheet.Range("B2:B"+string(3+length-1))
     let rowsRange = sheet.Range(dataArea)
@@ -36,9 +24,12 @@ let writeToExcel (sheet: Worksheet) (processedCsv: ProcessedCsv) =
     SimplePattern namesRange
     SetPattern rowsRange
     SimpleColorLightGrayFormat namesRange
-    sheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
 
-let write (processCsv: ProcessedCsv option) = 
+let setExcelStyle (worksheet: Worksheet)(sheetName: string)(leftSpaceWidth: int) =
+    worksheet.Name <- sheetName
+    worksheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
+
+let write (worksheet: Worksheet)(processCsv: ProcessedCsv option) =
     match processCsv with
-    | Some(csv) -> writeToExcel newWorksheet csv
+    | Some(csv) -> writeToExcel worksheet csv
     | None -> do failwith "quit" 
