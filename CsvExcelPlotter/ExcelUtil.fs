@@ -1,7 +1,7 @@
 ﻿module Excel.Util
 open Microsoft.Office.Interop.Excel
 
-// 範囲の周りのセルに罫線(細い線)を設定します。
+// 範囲の周りのセルに罫線(細い線)を設定します。範囲の内側のセルの境界には描画しません。
 let SetPattern (range:Range) =
     range.Borders.[XlBordersIndex.xlEdgeLeft].LineStyle <- XlLineStyle.xlContinuous
     range.Borders.[XlBordersIndex.xlEdgeLeft].Weight <- XlBorderWeight.xlThin
