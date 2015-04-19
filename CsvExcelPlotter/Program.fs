@@ -29,7 +29,7 @@ let main argv =
     // insert new work sheet
     let newWorksheet = (workbook.Worksheets.Add() :?> Worksheet)
     // output to Excel
-    setExcelStyle newWorksheet sheet1Name leftSpaceWidth
+    setExtraExcelStyle newWorksheet sheet1Name leftSpaceWidth
     write newWorksheet csv
 
     0 // return an integer exit code

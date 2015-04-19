@@ -25,7 +25,7 @@ let writeToExcel (sheet: Worksheet) (processedCsv: ProcessedCsv) =
     SetPattern rowsRange
     SimpleColorLightGrayFormat namesRange
 
-let setExcelStyle (sheet: Worksheet)(sheetName: string)(leftSpaceWidth: int) =
+let setExtraExcelStyle (sheet: Worksheet)(sheetName: string)(leftSpaceWidth: int) =
     sheet.Name <- sheetName
     sheet.Columns.Range("A:A").ColumnWidth <- leftSpaceWidth
 
