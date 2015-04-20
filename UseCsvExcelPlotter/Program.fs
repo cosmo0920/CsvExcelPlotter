@@ -1,4 +1,7 @@
-﻿module Main
+﻿// Learn more about F# at http://fsharp.net
+// See the 'F# Tutorial' project for more help.
+
+module Main
 open Writer
 open System.IO
 open FSharp.Data

@@ -1,0 +1,14 @@
+﻿itemName,   item1,    item2,    item3
+multiline,"test 0:0
+newline
+piyo"            , test 0:1, test 0:2
+simple1, test 1:0, test 1:1, test 1:2
+simple2, test 2:0, test 2:1, test 2:2
+simple3, test 3:0, test 3:1, test 3:2
+simple4, test 4:0, test 4:1, test 4:2
+simple5, test 5:0, test 5:1, test 5:2
+simple6, test 6:0, test 6:1, test 6:2
+simple7, test 7:0, test 7:1, test 7:2
+simple8, test 8:0, test 8:1, test 8:2
+simple9, test 9:0, test 9:1, test 9:2
+simple10, test 10:0, test 10:1, test10:2
